@@ -8,23 +8,24 @@ s = u'这个字怎么念？'
 
 pairs = []
 for ch in s:
-    pairs.append((ch, hanzi.to_pinyin(ch)))
+  pairs.append((ch, hanzi.to_pinyin(ch)))
 
 
 @app.route("/")
 def hello():
-    return hanzi.to_pinyin(s)
+  return hanzi.to_pinyin(s)
 
 
 @app.route('/test', methods=['GET', 'POST'])
 def login():
-    if request.method == 'POST':
-        sentence = request.get_json()
-        print sentence
-        return jsonify(s=hanzi.to_pinyin(s))
-    else:
-        return "Error wrong method"
+  if request.method == 'POST':
+    print 'POST' 
+    data = request.get_json()
+    print data 
+    return jsonify(s=hanzi.to_pinyin(data['data']))
+  else:
+    return "Error wrong method"
 
 
 if __name__ == "__main__":
-    app.run()
+  app.run()
