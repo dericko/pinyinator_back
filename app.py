@@ -1,6 +1,6 @@
 # coding: utf-8
 from dragonmapper import hanzi
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
 
@@ -9,7 +9,7 @@ s = u'这个字怎么念？'
 
 @app.route("/")
 def home():
-    return hanzi.to_pinyin(s)
+    return render_template('index.html')
 
 
 @app.route('/pinyinify', methods=['GET', 'POST'])
