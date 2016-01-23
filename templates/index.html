@@ -3,19 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Piyinator</title>
-    <!-- <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 
 <body>
-  <form class="text-box" action="index.html" method="post">
-    <input id='chinese-text' type="text" name="chinese-text" value="">
-    <input class="button" id='submit-button' type="button" name="submit" value="">
-  </form>
-  <div class="output">
+  <div class="container">
+        <div class="header clearfix">
+          <h3 class="text-muted">Pinyinator by: Derick and Kyle</h3>
+        </div>
+        <div class="form-group">
+          <label for="chinese-text">Article:</label>
+          <textarea class="form-control" rows="6" id="chinese-text"></textarea>
+        </div>
+        <button type="button" class="btn btn-default">Pinyinify</button>
 
+        <footer class="footer">
+          <p>© 2015 Pinyinator, Inc.</p>
+        </footer>
+      </div>
   </div>
+
 </body>
 
 </html>
