@@ -12,16 +12,14 @@ for ch in s:
 
 
 @app.route("/")
-def hello():
+def home():
   return hanzi.to_pinyin(s)
 
 
-@app.route('/test', methods=['GET', 'POST'])
-def login():
+@app.route('/pinyinify', methods=['POST'])
+def pinyinify():
   if request.method == 'POST':
-    print 'POST' 
     data = request.get_json()
-    print data 
     return jsonify(s=hanzi.to_pinyin(data['data']))
   else:
     return "Error wrong method"
