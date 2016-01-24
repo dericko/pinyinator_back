@@ -6,16 +6,16 @@ app = Flask(__name__)
 
 s = u'这个字怎么念？'
 
-
 @app.route("/")
 def home():
     return render_template('index.html')
 
 
-@app.route('/pinyinify', methods=['GET', 'POST'])
-def login():
+@app.route('/pinyinify', methods=['POST'])
+def pinyinify():
     if request.method == 'POST':
         print 'POST'
+        print request
         data = request.get_json()
         pairs = []
         for ch in data['data']:
