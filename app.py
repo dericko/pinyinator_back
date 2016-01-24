@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 s = u'这个字怎么念？'
 
+
 @app.route("/")
 def home():
     return render_template('index.html')
@@ -15,9 +16,11 @@ def home():
 def pinyinify():
     if request.method == 'POST':
         print 'POST'
-        print request
-        data = request.get_json()
+        # print request.data
+
+        data = request.form
         pairs = []
+        print 'Reaching'
         for ch in data['data']:
             pairs.append((ch, hanzi.to_pinyin(ch)))
         return jsonify(sentence=pairs)
@@ -25,4 +28,4 @@ def pinyinify():
         return "Error wrong method"
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
