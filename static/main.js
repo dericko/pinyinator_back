@@ -21,8 +21,10 @@ var displayPairs = function (data) {
   console.log(data);
   var pairs = data.sentence;
   var $display = $('p');
+  var stringRep = '';
   pairs.forEach(function (pair) {
     console.log(pair[0] + ': ' + pair[1]);
+    stringRep = stringRep + ' ' + pair[0];
   });
-
+  console.log(stringRep);
 }

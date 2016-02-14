@@ -1,6 +1,8 @@
+beautifulsoup4==4.4.1
 dragonmapper==0.2.5
 Flask==0.10.1
 hanzidentifier==1.0.2
+HTMLParser==0.0.2
 itsdangerous==0.24
 Jinja2==2.8
 MarkupSafe==0.23

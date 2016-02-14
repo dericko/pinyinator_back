@@ -1,5 +1,6 @@
 # coding: utf-8
 from dragonmapper import hanzi
+from bs4 import BeautifulSoup
 from flask import Flask, request, jsonify, render_template
 
 app = Flask(__name__)
@@ -19,11 +20,25 @@ def pinyinify():
         # print request.data
 
         data = request.form
-        pairs = []
-        print 'Reaching'
-        for ch in data['data']:
-            pairs.append((ch, hanzi.to_pinyin(ch)))
-        return jsonify(sentence=pairs)
+        titlePairs = []
+        paragraphsPairs = []
+        html_doc = data['data']
+        html_doc = u''+html_doc
+        soup = BeautifulSoup(html_doc, 'html.parser')
+        print soup.h1.text
+        # print soup.get_text()
+        title = u'' + soup.h1.text
+        paragraphs = soup.find_all('p')
+        # print 'Reaching'
+        for ch in title:
+            titlePairs.append((ch, hanzi.to_pinyin(ch)))
+        for p in paragraphs:
+            paraPairs = []
+            print p
+            for ch in p.text:
+                paraPairs.append((ch, hanzi.to_pinyin(ch)))
+            paragraphsPairs.append(paraPairs)
+        return jsonify(title=titlePairs, paragraphs=paragraphsPairs)
     else:
         return "Error wrong method"
 
